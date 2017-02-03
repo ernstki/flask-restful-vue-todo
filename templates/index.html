@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    .formgroup {
+      margin-bottom: 10px;
+    }
+    .formgroup label {
+      width: 60px;
+    }
+    .formgroup input[type="text"] {
+      position:absolute;
+      left: 80px;
+    }
+    .formgroup button {
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>todo list</h1>
+  <div>
+    <ul id="todo-list">
+      <todo v-for="todo in todoList" v-bind:task="todo"></todo>
+    </ul>
+  </div>
+
+  <form id="add-todo">
+    <!-- <div class="formgroup"> -->
+    <!--   <label for="todo-id">ID:</label> -->
+    <!--   <input v-model.lazy.trim="newTodo.id" name="todo-id" type="text"> -->
+    <!-- </div> -->
+    <div class="formgroup">
+      <label for="todo-task">Task:</label>
+      <input v-model.lazy.trim="newTodo.task" name="task" type="text">
+    </div>
+    <div class="formgroup">
+      <button>Submit</button>
+    </div>
+  </form>
+
+  <script src="https://unpkg.com/vue/dist/vue.min.js"></script>
+  <script src="https://unpkg.com/jquery/dist/jquery.min.js"></script>
+  <script src="{{ url_for('static', filename='js/todolist.js') }}"></script>
+
+</body>
+</html>
