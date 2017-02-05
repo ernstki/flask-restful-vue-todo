@@ -1,0 +1,51 @@
+/**
+ * Body CSS
+ */
+html,
+body {
+  height: 100%;
+}
+
+html,
+body,
+input,
+textarea,
+buttons {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.004);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+
+header a,
+header a:hover,
+header a:visited {
+  color: white;
+}
+
+#content-wrapper {
+  min-height: 100%;
+
+  /* sticky footer */
+  margin-bottom: -100px;
+  padding-bottom: 100px;
+}
+
+footer {
+  height: 100px;
+  background-color: #eee;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 35px;
+}
+
+.mui-list--item {
+  -webkit-align-items: center;
+  align-items: center;
+}

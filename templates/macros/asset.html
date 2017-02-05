@@ -1,0 +1,21 @@
+{#- Source: https://realpython.com/blog/python/primer-on-jinja-templating/ -#}
+
+{% macro css(source) -%}
+<link href="{{ url_for('static', filename='css/' ~ source) }}" rel="stylesheet">
+{%- endmacro -%}
+
+{% macro js(source) -%}
+<script src="{{ url_for('static', filename='js/' ~ source) }}"></script>
+{%- endmacro -%}
+
+{% macro vendorcss(source) -%}
+<link href="{{ url_for('static', filename='vendor/' ~ source) }}" rel="stylesheet">
+{%- endmacro -%}
+
+{% macro vendorjs(source) -%}
+<script src="{{ url_for('static', filename='vendor/' ~ source) }}"></script>
+{%- endmacro -%}
+
+{% macro unpkg(lib) -%}
+<script src="https://unpkg.com/{{ lib }}/dist/{{ lib }}.min.js"></script>
+{%- endmacro -%}

@@ -4,6 +4,11 @@ from flask_restful import Resource, Api, abort, reqparse
 app = Flask(__name__)
 api = Api(app)
 
+app.config.update(
+    DEBUG=True,
+    TEMPLATES_AUTO_RELOAD=True
+)
+
 parser = reqparse.RequestParser()
 parser.add_argument('todo-task')
 
@@ -54,6 +59,7 @@ api.add_resource(TodoList, '/todos')
 
 @app.route('/')
 def index():
+    #return render_template("todo.html")
     return render_template("index.html")
 
 if __name__ == '__main__':

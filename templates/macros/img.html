@@ -1,0 +1,13 @@
+{%- macro img(source, title) -%}
+{% if title -%}
+<img title="{{ title }}" alt="{{ title }}"
+ src="{{ url_for('static', filename='img/' ~ source) }}">
+{% else -%}
+<img src="{{ url_for('static', filename='img/' ~ source) }}">
+{%- endif -%}
+{%- endmacro -%}
+
+{% macro img_url(source) -%}
+{{ url_for('static', filename='img/' ~ source) }}
+{% endmacro %}
+
