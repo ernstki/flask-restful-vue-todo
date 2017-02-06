@@ -8,3 +8,7 @@ ptpython==0.36
 six==1.10.0
 Markdown==2.6.8
 bleach==1.5.0
+supervisor==3.3.1
+MarkupSafe==0.23
+Flask-SQLAlchemy==2.1
+SQLAlchemy==1.1.5

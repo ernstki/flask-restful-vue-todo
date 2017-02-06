@@ -2,6 +2,7 @@
 .*sw?
 static/vendor/
 *.db
+*.pid
 
 #### joe made this: https://goel.io/joe
 
