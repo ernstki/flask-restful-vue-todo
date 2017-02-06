@@ -3,23 +3,26 @@
           <div class="mui-divider"></div>
 
           <ul id="todo-list" class="mdl-list" style="display:none">
-            <li class="mdl-list__item" v-for="(todo, index) in todos">
+            <li class="mdl-list__item" v-for="todo in todos">
 
+{% raw %}
               <div v-if="!todo.done" class="mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-icon"
-                   @click="toggleDone(index)">check_box_outline_blank</i>
-                {% raw %}{{ todo.task }}{% endraw %}
+                   @click="toggleDone(todo.id)">check_box_outline_blank</i>
+                {{ todo.task }}
               </div>
 
               <div v-else class="todo-done mdl-list__item-primary-content">
                 <i class="material-icons mdl-list__item-icon"
-                  @click="toggleDone(index)">check_box</i>
-                <span>{% raw %}{{ todo.task }}{% endraw %}</span>
+                  @click="toggleDone(todo.id)">check_box</i>
+                <span>{{ todo.task }}</span>
               </div>
+{% endraw %}
 
               <button class="mui-btn mui-btn--small mui-btn--flat mui-btn--danger
                              mui--pull-right mui--align-middle"
-                      @click="deleteToDo(index)">Delete</button>
+                      v-bind:title="'Delete to-do #' + todo.id"
+                      @click="deleteToDo(todo.id)">Delete</button>
             </li>
 
             <li class="mdl-list__item">
@@ -50,7 +53,8 @@
             </li>
           </ul>
 
-          <button class="mui--pull-right mui-btn mui-btn--flat mui-btn--primary">
+          <button class="mui--pull-right mui-btn mui-btn--flatmui-btn--primary"
+                  disabled title="Unimplemented" style="cursor:not-allowed">
             <i class="material-icons mui--align-middle">delete</i>
             undelete
           </button>

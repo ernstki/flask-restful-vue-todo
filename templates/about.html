@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flask-Restful Demo</title>
+  <title>Flask-Restful Demo - About</title>
   <link rel="stylesheet"
    href="https://fonts.googleapis.com/icon?family=Material+Icons">
   {{ asset.vendorcss('mui/packages/cdn/css/mui.min.css') }}
@@ -14,30 +14,24 @@
 <body>
 {% include 'partials/appbar.html' %}
 
-  <div id="todo-container" class="mui-container-fluid">
+  <div id="readme-container" class="mui-container-fluid">
     <div class="mui--appbar-height"></div>
-    <br>
     <br>
 
     <div class="mui-row">
-      <div class="mui-col-md-2"></div>
-      <div class="mui-col-md-8">
+      <div class="mui-col-md-1"></div>
+      <div class="mui-col-md-10">
         <div class="mui-panel mui--z2">
-{% include 'partials/todolist.html' %}
+          {{ readme }}
         </div>
       </div>
-      <div class="mui-col-md-2"></div>
+      <div class="mui-col-md-1"></div>
     </div><!--/.mui-row-->
 
   </div><!--/#content-wrapper-->
 
 {% include 'partials/footer.html' %}
 
-  {{ asset.vendorjs('lodash/dist/lodash.min.js') }}
-  {{ asset.vendorjs('vue/dist/vue.js') }}
-  {{ asset.vendorjs('fetch/fetch.js') }}
-  {{ asset.vendorjs('fetchival/index.min.js') }}
   {{ asset.vendorjs('mui/packages/cdn/js/mui.min.js') }}
-  {{ asset.js('todolist.js') }}
 </body>
 </html>

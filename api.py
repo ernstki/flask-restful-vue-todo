@@ -3,9 +3,12 @@ import sys
 import click
 import logging
 
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, Markup
 from flask_restful import Resource, Api, abort, reqparse
 from flask_sqlalchemy import SQLAlchemy
+from markdown import Markdown
+from bleach import linkify
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -14,7 +17,9 @@ db = SQLAlchemy(app)
 mypath = os.path.dirname(__file__)
 
 putparser = reqparse.RequestParser(trim=True)
+putparser.add_argument('id')    # FIXME: but it's ignored
 putparser.add_argument('task')
+putparser.add_argument('done')  # but it's ignored
 
 postparser = reqparse.RequestParser(trim=True)
 postparser.add_argument('batch', type=list, location='json')
@@ -71,15 +76,23 @@ def init_db():
     db.session.commit()
 
 
+def fetch_record_or_abort(id):
+    """
+    Attempt to retrieve todo <id> from database or abort (error 404)
+    """
+    t = Todo.query.get(id)
+    if not t:
+        abort(404, message="To-do %s doesn't exist" % id)
+    return t
+
+
 class TodoResource(Resource):
     def get(self, id):
         """
         Fetch an individual to-do by ID
         """
-        t = Todo.query.get(id)
-        if not t:
-            abort(404, message="To-do {} doesn't exist" % id)
-        return jsonify(Todo.query.get(id).as_dict())
+        t = fetch_record_or_abort(id)
+        return jsonify(t.as_dict())
 
     def put(self, id):
         """
@@ -92,22 +105,23 @@ class TodoResource(Resource):
             abort(400, message='This endpoint expects a single JSON object, '
                                'not an array')
 
-        t = Todo.query.get(id)
-        if not t:
-            abort(404, message="To-do {} doesn't exist" % id)
+        t = fetch_record_or_abort(id)
         t.task = args['task']
         db.session.add(t)
         db.session.commit()
         return jsonify(t.as_dict())
 
+    # TODO: Implement this so you can just rename the task or mark it done
+    def patch(self, id):
+        abort(501, message='Unimplemented. Use PUT /todo/<id> instead.')
+
     def delete(self, id):
-        del todos[todo_id]
-        t = Todo.query.get(id)
-        if not t:
-            abort(404, message="To-do {} doesn't exist" % id)
-        db.session.delete(id)
+        t = fetch_record_or_abort(id)
+        db.session.delete(t)
         db.session.commit()
-        return '', 204
+        # Workaround for a problem with fetchival's handling of 204s
+        # See https://github.com/typicode/fetchival/issues/11
+        return jsonify({'deleted': [ id ]})
 
 
 class TodoListResource(Resource):
@@ -151,6 +165,26 @@ api.add_resource(TodoListResource, '/todos')
 @app.route('/')
 def index():
     return render_template("index.html")
+
+
+@app.route('/about')
+def about():
+    mdfile = os.path.join(mypath, 'README.md')
+    with app.open_resource(mdfile, 'r') as f:
+        #sourcetext = six.text_type(f.read(), 'utf-8')
+        sourcetext = f.read()
+
+    # Borrowed from https://github.com/skurfer/RenderMarkdown
+    md_ext = ['extra', 'codehilite']
+
+    md = Markdown(extensions=md_ext, output_format='html5')
+
+    # If you needed it, here's how to force a string into UTF-8 format.
+    #     mdown = mdown.decode('utf8', 'ignore')
+    # ...thanks, https://stackoverflow.com/a/20768800
+    mdown = Markup(linkify(md.convert(sourcetext), skip_pre=True))
+
+    return render_template('about.html', readme=mdown)
 
 
 @app.before_first_request

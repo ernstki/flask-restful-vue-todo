@@ -28,6 +28,14 @@ header ul.mui-list--inline {
   margin-bottom: 0;
 }
 
+header ul.mui-list--inline li {
+  margin-left: 12px;
+}
+
+header ul.mui-list--inline li a:hover {
+  text-decoration: none;
+}
+
 header a,
 header a:hover,
 header a:visited {
@@ -40,6 +48,28 @@ header a:visited {
   /* sticky footer */
   margin-bottom: -100px;
   padding-bottom: 100px;
+}
+
+#readme-container .mui-panel {
+  padding: 12px 48px 24px;
+}
+
+#readme-container h1 {
+  font-size: xx-large;
+  font-weight: bold;
+  text-decoration: underline;
+  margin-bottom: 12px;
+}
+
+#readme-container h2 {
+  font-size: x-large;
+  font-weight: bold;
+  margin-bottom: 0;
+}
+
+#readme-container h3 {
+  font-size: x-large;
+  margin-bottom: 0;
 }
 
 footer {

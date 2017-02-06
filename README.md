@@ -1,4 +1,4 @@
-# A To-do List with Flask-Restful & Vue
+# Flask-Restful + Vue To-do
 
 A simple to-do list using Flask-Restful, Vue.js and MUI (a small CSS + JS
 framework implementing Google's Material Design guidelines).
@@ -44,7 +44,7 @@ same terms ([BSD 3-clause](LICENSE.txt)).
 * Flask documentation on [accessing request data][flask]
 * Flask-Restful documentation on [request parsing][fr]
 * [MUI][] "Landing Page" sample layout
-* [Material Design Lite] - better display of Material icons in `<li>`s
+* [Material Design Lite][mdl] - better display of Material icons in `<li>`s
 * [Material Design icons][mdicons]
 * [Vue][] (v2.x)
 * [Fetchival][] - a friendlier wrapper around [fetch][] for retrieving external

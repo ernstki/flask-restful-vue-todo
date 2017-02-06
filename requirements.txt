@@ -6,3 +6,5 @@ Flask-RESTful==0.3.5
 Flask-SQLAlchemy==2.1
 ptpython==0.36
 six==1.10.0
+Markdown==2.6.8
+bleach==1.5.0
