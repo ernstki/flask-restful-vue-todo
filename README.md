@@ -1,11 +1,32 @@
-# Flask-Restful Demo API
+# A To-do List with Flask-Restful & Vue
 
 A simple to-do list using Flask-Restful, Vue.js and MUI (a small CSS + JS
-framework implementing Google's Material Design guidelines)
+framework implementing Google's Material Design guidelines).
 
 ## Author
 
 Kevin Ernst (ernstki -at- mail.uc.edu)
+
+## Installation and Use
+
+```bash
+git clone git@github.uc.edu:ernstki/flask-restful-todo.git
+cd flask-restful-todo
+
+# Install dependencies
+pip install -r requirements.txt
+bower install
+
+# Run the Flask web application
+export FLASK_APP=api.py
+flask run
+```
+
+If it doesn't already exist, a SQLite database is created for you before the
+first request to the web application.
+
+Finally, point your browser at <http://127.0.0.1:5000>, or browse the API at
+<http://127.0.0.1:5000/todos>.
 
 ## License
 
@@ -26,7 +47,7 @@ same terms ([BSD 3-clause](LICENSE.txt)).
 * [Material Design Lite] - better display of Material icons in `<li>`s
 * [Material Design icons][mdicons]
 * [Vue][] (v2.x)
-* [Fetchival][] - a friendlier wrapper around [fetch] for retrieving external
+* [Fetchival][] - a friendlier wrapper around [fetch][] for retrieving external
   resources
 
 [flask]: http://flask.pocoo.org/docs/0.12/quickstart/#accessing-request-data
@@ -38,5 +59,6 @@ same terms ([BSD 3-clause](LICENSE.txt)).
 [vueguide]: https://vuejs.org/v2/guide/
 [vuelists]: https://vuejs.org/v2/guide/list.html
 [fetchival]: https://github.com/typicode/fetchival
+[fetch]: https://github.com/github/fetch
 [frqs]: https://flask-restful.readthedocs.io/en/latest/quickstart.html
 [scotchio]: https://scotch.io/tutorials/build-an-app-with-vue-js-a-lightweight-alternative-to-angularjs
