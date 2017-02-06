@@ -1,0 +1,56 @@
+          <!-- partials/todolist.html -->
+          <h3 class="mui--text-center">to-do list</h3>
+          <div class="mui-divider"></div>
+
+          <ul id="todo-list" class="mdl-list" style="display:none">
+            <li class="mdl-list__item" v-for="(todo, index) in todos">
+
+              <div v-if="!todo.done" class="mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon"
+                   @click="toggleDone(index)">check_box_outline_blank</i>
+                {% raw %}{{ todo.task }}{% endraw %}
+              </div>
+
+              <div v-else class="todo-done mdl-list__item-primary-content">
+                <i class="material-icons mdl-list__item-icon"
+                  @click="toggleDone(index)">check_box</i>
+                <span>{% raw %}{{ todo.task }}{% endraw %}</span>
+              </div>
+
+              <button class="mui-btn mui-btn--small mui-btn--flat mui-btn--danger
+                             mui--pull-right mui--align-middle"
+                      @click="deleteToDo(index)">Delete</button>
+            </li>
+
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content">
+                <i class="material-icons md-dark md-inactive mdl-list__item-icon"
+                   style="">check_box_outline_blank</i>
+
+                <form id="add-todo" class="mui-form--not-inline"
+                      @submit.prevent="">
+                  <div class="mui-textfield">
+                    <input autofocus name="task" type="text"
+                           placeholder="New to-do" v-model="todo.task"
+                           @keyup.enter="addToDo">
+                  </div>
+                </form>
+              </span>
+            </li>
+
+          </ul><!--/#add-todo-->
+
+          <ul id="loading-msg" class="mdl-list" style="">
+            <li class="mdl-list__item">
+              <span class="mdl-list__item-primary-content mui--text-dark-hint">
+                <i class="material-icons md-dark md-inactive mdl-list__item-icon"
+                    style="">check_box_outline_blank</i>
+                  Loading...
+              </span>
+            </li>
+          </ul>
+
+          <button class="mui--pull-right mui-btn mui-btn--flat mui-btn--primary">
+            <i class="material-icons mui--align-middle">delete</i>
+            undelete
+          </button>

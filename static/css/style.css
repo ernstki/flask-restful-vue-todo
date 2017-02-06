@@ -24,13 +24,17 @@ header {
   z-index: 2;
 }
 
+header ul.mui-list--inline {
+  margin-bottom: 0;
+}
+
 header a,
 header a:hover,
 header a:visited {
   color: white;
 }
 
-#content-wrapper {
+#todo-container {
   min-height: 100%;
 
   /* sticky footer */
@@ -45,7 +49,23 @@ footer {
   padding-top: 35px;
 }
 
-.mui-list--item {
-  -webkit-align-items: center;
-  align-items: center;
+.todo-done {
+  opacity: 0.4;
+}
+
+.todo-done span {
+  text-decoration: line-through;
+}
+
+/* Source: https://google.github.io/material-design-icons/  */
+.material-icons.md-dark { color: rgba(0, 0, 0, 0.54); }
+.material-icons.md-dark.md-inactive { color: rgba(0, 0, 0, 0.26); }
+
+#add-todo {
+  width: 100%;
+}
+
+#add-todo .mui-textfield {
+  padding-top: 0;
+  margin-bottom: 0;
 }
