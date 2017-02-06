@@ -1,0 +1,22 @@
+Kevin Ernst - 17SS_CS 5165 Homework #1
+--------------------------------------
+
+Public App URL: (The public URL of the website you’ve hosted)
+
+    http://cs5165ernstki.ddns.net:5000/
+
+GitHub Code URL:
+
+    https://github.uc.edu/ernstki/flask-restful-vue-todo
+
+GitHub Doc URL:
+
+    http://cs5165ernstki.ddns.net:5000/about
+
+GitHub commit hash: (commit hash for the revision of the project you wish to be
+graded on)
+
+    https://github.uc.edu/ernstki/flask-restful-vue-todo/commit/41b881a9930c0850a41b7125b85a74f38e71134c
+
+
+Thanks!
