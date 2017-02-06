@@ -1,6 +1,7 @@
 *~
 .*sw?
 static/vendor/
+*.db
 
 #### joe made this: https://goel.io/joe
 
