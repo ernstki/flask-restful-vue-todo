@@ -3,6 +3,8 @@
 A simple to-do list using Flask-Restful, Vue.js and MUI (a small CSS + JS
 framework implementing Google's Material Design guidelines).
 
+![](screenshot.png)
+
 ## Author
 
 Kevin Ernst (ernstki -at- mail.uc.edu)
