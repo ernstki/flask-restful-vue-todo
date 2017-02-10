@@ -12,7 +12,8 @@ Kevin Ernst (ernstki -at- mail.uc.edu)
 ## Installation and Use
 
 ```bash
-git clone git@github.uc.edu:ernstki/flask-restful-todo.git
+# where <githost> is either github.com or github.uc.edu
+git clone git@<githost>:ernstki/flask-restful-todo.git
 cd flask-restful-todo
 
 # Install dependencies
